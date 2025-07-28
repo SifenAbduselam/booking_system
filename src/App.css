@@ -1,0 +1,52 @@
+/* Container for the entire app, centers content and sets max width */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Base styles for logo images */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter; /* Hint browser to optimize filter changes */
+  transition: filter 300ms ease-in-out; /* Smooth filter transition */
+}
+
+/* Hover effect for all logos */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+/* Specific hover effect for React logo variant */
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* Spin animation for logos */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply spin animation only if user hasn't requested reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin 20s linear infinite;
+  }
+}
+
+/* Card component padding for consistent spacing */
+.card {
+  padding: 2em;
+}
+
+/* Styling for "read the docs" links or text */
+.read-the-docs {
+  color: #888;
+}
