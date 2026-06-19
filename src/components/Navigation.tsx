@@ -8,14 +8,13 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Define navigation links
-  const menuItems = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "#" },
-    { name: "Blogs", href: "#" },
-    { name: "Recipes", href: "#" },
-    { name: "FAQ", href: "#" },
-    { name: "Contact Us", href: "#" },
-  ];
+const menuItems = [
+  { id: "home", name: "Home", href: "/" },
+  { id: "cakes", name: "Cakes", href: "/#cakes" },
+  { id: "prices", name: "Prices", href: "/#prices" },
+  { id: "order", name: "Order", href: "/#order" },
+  { id: "contact", name: "Contact Us", href: "/#contact" },
+];
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
@@ -38,15 +37,11 @@ const Navigation = () => {
           {/* Desktop navigation menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {menuItems.map(({ name, href }) => (
-                <Link
-                  key={name}
-                  to={href}
-                  className="text-gray-700 hover:text-rose-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                >
-                  {name}
-                </Link>
-              ))}
+             {menuItems.map(({ id, name, href }) => (
+  <Link key={id} to={href}>
+    {name}
+  </Link>
+))}
             </div>
           </div>
 

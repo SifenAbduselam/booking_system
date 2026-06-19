@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HeroImage from '../assets/image/welcome-to-bakersly.webp';
+import { business } from "@/config/business";
 
 const HeroBanner = () => {
   return (
@@ -15,14 +16,12 @@ const HeroBanner = () => {
           {/* Text Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Welcome to
-              <span className="block text-rose-600">Bakersly</span>
+              {business.hero.title}
+              <span className="block text-rose-600">Every Celebration</span>
             </h1>
 
             <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto lg:mx-0">
-              Discover delicious, healthy recipes and inspiring stories that
-              celebrate the joy of natural, wholesome desserts.
-            </p>
+{business.hero.subtitle}            </p>
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -30,13 +29,13 @@ const HeroBanner = () => {
                 to="#"
                 className="border-2 border-rose-600 bg-rose-600 text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-rose-700 hover:border-rose-700 transition-colors duration-200 text-center"
               >
-                Explore Recipes
+               View Cakes
               </Link>
               <Link
                 to="#"
                 className="border-2 border-rose-600 text-rose-600 px-8 py-4 rounded-full text-sm font-semibold hover:bg-rose-600 hover:text-white transition-colors duration-200 text-center"
               >
-                Read Blogs
+                Order Now
               </Link>
             </div>
           </div>
@@ -44,7 +43,7 @@ const HeroBanner = () => {
           {/* Image Content */}
           <div className="relative">
             <img
-              src={HeroImage}
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587"
               alt="Delicious desserts welcoming you to Bakersly"
               className="w-full h-[400px] object-cover rounded-2xl shadow-2xl"
               loading="eager"

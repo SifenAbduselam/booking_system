@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import Logo from "/logo.webp";
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { business } from "@/config/business";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -112,25 +113,25 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
-              {[
-                { to: "/", label: "Home" },
-                { to: "#", label: "About Us" },
-                { to: "#", label: "Recipes" },
-                { to: "#", label: "Blog" },
-                { to: "#", label: "FAQ" },
-                { to: "#", label: "Contact" },
-              ].map(({ to, label }) => (
-                <li key={to}>
-                  <Link
-                    to={to}
-                    className="text-gray-300 hover:text-rose-400 transition-colors"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+       <ul className="space-y-2 text-sm">
+  {[
+    { id: "home", to: "/", label: "Home" },
+    { id: "about", to: "/about", label: "About Us" },
+    { id: "recipes", to: "/recipes", label: "Recipes" },
+    { id: "blog", to: "/blog", label: "Blog" },
+    { id: "faq", to: "/faq", label: "FAQ" },
+    { id: "contact", to: "/contact", label: "Contact" },
+  ].map(({ id, to, label }) => (
+    <li key={id}>
+      <Link
+        to={to}
+        className="text-gray-300 hover:text-rose-400 transition-colors"
+      >
+        {label}
+      </Link>
+    </li>
+  ))}
+</ul>
           </div>
 
           {/* Contact Info */}
@@ -139,8 +140,8 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-gray-300">
               <p>📍 123 Baker Street</p>
               <p>Saint Petersburg, SP 12345</p>
-              <p>📞 +1 (555) 123-4567</p>
-              <p>✉️ hello@bakersly.com</p>
+              <p>📞 +1 {business.phone}</p>
+              <p>✉️ {business.email}</p>
             </div>
 
             <div className="mt-6">

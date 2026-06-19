@@ -1,13 +1,16 @@
 import HeroBanner from "../components/HeroBanner";
 import WhoWeAre from "../components/WhoWeAre";
+import CakeGallery from "@/components/CakeGallery";
+import PriceList from "@/components/PriceList";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Banner */}
       <HeroBanner />
-
       {/* Who We Are Section */}
+       <CakeGallery />
+       <PriceList />
       <WhoWeAre />
 
       {/* Philosophy Section */}
