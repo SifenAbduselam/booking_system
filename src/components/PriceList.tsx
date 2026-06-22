@@ -33,11 +33,11 @@ const PriceList = () => {
               </p>
 
               <p className="text-gray-500 mt-3 text-sm">
-                Perfect for celebrations, birthdays, and special events.
+               pefrect for every celebration
               </p>
 
               <button className="mt-6 w-full bg-rose-600 text-white py-2 rounded-lg hover:bg-rose-700 transition">
-                Order This Cake
+                order now
               </button>
             </div>
           ))}
