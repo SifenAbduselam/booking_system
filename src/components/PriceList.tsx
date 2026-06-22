@@ -9,7 +9,7 @@ const PriceList = () => {
         {/* Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-            Simple & Transparent Pricing
+            simple & transparent 
           </h2>
           <p className="text-gray-600 mt-3">
             Premium cakes made affordable for every celebration
