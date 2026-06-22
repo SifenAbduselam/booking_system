@@ -25,7 +25,7 @@ const Footer = () => {
     }
 
     toast({
-      title: "🎉 Subscribed!",
+      title: " Subscribed ",
       description: "You've successfully subscribed to our newsletter.",
     });
 
