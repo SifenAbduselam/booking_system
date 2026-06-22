@@ -48,7 +48,7 @@ const menuItems = [
           {/* Desktop contact prompt (hidden on small screens) */}
           <div className="hidden lg:block">
             <span className="text-sm text-gray-600 font-medium">
-              Follow us for tips & recipes
+             follow ud for tips and recipies
             </span>
           </div>
 
