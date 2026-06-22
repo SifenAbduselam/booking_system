@@ -12,7 +12,7 @@ const CakeGallery = () => {
             Our Signature Cakes
           </h2>
           <p className="text-gray-600 mt-3">
-            Handcrafted luxury cakes made for unforgettable moments
+            Luxury cakes for ungorgetable moments
           </p>
         </div>
 
