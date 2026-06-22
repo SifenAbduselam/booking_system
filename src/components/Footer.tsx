@@ -138,7 +138,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-white mb-4">Contact Info</h4>
             <div className="space-y-2 text-sm text-gray-300">
-              <p>📍 123 Baker Street</p>
+              <p>📍 123 Addis Abeba</p>
               <p>Saint Petersburg, SP 12345</p>
               <p>📞 +1 {business.phone}</p>
               <p>✉️ {business.email}</p>
