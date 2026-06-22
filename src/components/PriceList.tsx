@@ -12,7 +12,7 @@ const PriceList = () => {
             simple & transparent 
           </h2>
           <p className="text-gray-600 mt-3">
-            Premium cakes made affordable for every celebration
+            cakes affordable for every celebration
           </p>
         </div>
 
