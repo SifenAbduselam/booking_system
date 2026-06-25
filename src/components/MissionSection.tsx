@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useRef, useEffect } from "react";
 
+const videoRef = useRef<HTMLVideoElement>(null);
+useEffect(() => {
+  if (videoRef.current) {
+    videoRef.current.playbackRate = 0.5;
+  }
+}, []);
 const MissionSection = () => {
   return (
     <section className="relative w-full bg-[#1A0D09] overflow-hidden">
@@ -45,15 +52,14 @@ const MissionSection = () => {
         <div className="relative h-[400px] lg:h-auto">
           {/* Video Container */}
           <div className="absolute inset-0">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-              // Add playbackRate to slow it down
-              style={{ playbackRate: 0.5 }}
-            >
+           <video
+  ref={videoRef}
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+>
               {/* Replace with your actual video path */}
               <source
                 src="/videos/baking-process.mp4"

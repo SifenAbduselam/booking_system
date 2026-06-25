@@ -2,6 +2,7 @@ import HeroBanner from "../components/HeroBanner";
 import WhoWeAre from "../components/WhoWeAre";
 import CakeGallery from "@/components/CakeGallery";
 import PriceList from "@/components/PriceList";
+import MissionSection from "@/components/MissionSection";
 
 const Index = () => {
   return (
