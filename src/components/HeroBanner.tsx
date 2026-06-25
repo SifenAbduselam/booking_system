@@ -60,25 +60,8 @@ const HeroBanner = () => {
         <div className="w-16 h-[1px] bg-[#D4AF37]/50 mx-auto mb-8 animate-fade-in-up delay-300" />
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-400">
-          
-          {/* Primary Button — Solid Gold */}
-          <Link
-            to="/#cakes"
-            className="group bg-[#D4AF37] text-[#1A0D09] px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-[#E5C158] transition-all duration-300 shadow-lg hover:shadow-[#D4AF37]/30 flex items-center gap-2"
-          >
-            View Our Cakes
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-
-          {/* Secondary Button — Gold Outline */}
-          <Link
-            to="/book"
-            className="group border border-[#D4AF37] text-[#D4AF37] px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-[#D4AF37] hover:text-[#1A0D09] transition-all duration-300 flex items-center gap-2"
-          >
-            Book Now
-          </Link>
-        </div>
+       
+        
 
         {/* Bottom Stats */}
         <div className="mt-16 flex flex-wrap justify-center gap-8 md:gap-12 animate-fade-in-up delay-500">
