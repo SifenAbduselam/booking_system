@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-
+import bakingVideo from '../assets/videos/baking-process.mp4';
 const MissionSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   
@@ -104,10 +104,7 @@ const MissionSection = () => {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source
-                src="/videos/baking-process.mp4"
-                type="video/mp4"
-              />
+              <source src={bakingVideo} type="video/mp4" />
               {/* Fallback image if video doesn't load */}
             </video>
             
