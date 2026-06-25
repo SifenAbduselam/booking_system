@@ -6,79 +6,121 @@ import TopBar from "./TopBar";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeHover, setActiveHover] = useState<string | null>(null);
 
-  // Define navigation links
-const menuItems = [
-  { id: "home", name: "Home", href: "/" },
-  { id: "cakes", name: "Cakes", href: "/#cakes" },
-  { id: "prices", name: "Prices", href: "/#prices" },
-  { id: "order", name: "Order", href: "/#order" },
-  { id: "contact", name: "Contact Us", href: "/#contact" },
-];
+  const menuItems = [
+    {
+      id: "about",
+      name: "About Us",
+      href: "#about",
+      description: "Learn about our luxury cake craftsmanship",
+    },
+    {
+      id: "products",
+      name: "Products",
+      href: "#products",
+      description: "Explore cakes, prices & collections",
+    },
+    {
+      id: "contact",
+      name: "Contact",
+      href: "#contact",
+      description: "Get in touch with our bakery",
+    },
+  ];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Top bar with contact info or social links */}
-      <TopBar />
+    <nav className="sticky top-0 z-50">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link to="/">
-              <img
-                src={Logo}
-                alt="Bakersly Logo"
-                className="h-[80px] w-auto object-contain"
-              />
-            </Link>
-          </div>
+      {/* TOP BAR BACKGROUND IMAGE */}
+      <div className="bg-[url('/cake-bg.jpg')] bg-cover bg-center">
+        <div className="bg-black/60">
+          <TopBar />
+        </div>
+      </div>
 
-          {/* Desktop navigation menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-             {menuItems.map(({ id, name, href }) => (
-  <Link key={id} to={href}>
-    {name}
-  </Link>
-))}
-            </div>
-          </div>
+      {/* MAIN NAV */}
+      <div className="bg-[#2A140D]/95 backdrop-blur-md border-b border-[#D4AF37]/30">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
 
-          {/* Desktop contact prompt (hidden on small screens) */}
-          <div className="hidden lg:block">
-            <span className="text-sm text-gray-600 font-medium">
-             follow ud for tips and recipies
+          {/* LOGO */}
+          <Link to="/" className="flex items-center">
+            <span className="text-[#D4AF37] text-2xl font-bold tracking-wide">
+              Amazing Cake Shop
             </span>
+          </Link>
+
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center gap-10 relative">
+
+            {menuItems.map((item) => (
+              <div
+                key={item.id}
+                className="relative"
+                onMouseEnter={() => setActiveHover(item.id)}
+                onMouseLeave={() => setActiveHover(null)}
+              >
+                <a
+                  href={item.href}
+                  className="text-[#F5E6B3] hover:text-[#D4AF37] transition"
+                >
+                  {item.name}
+                </a>
+
+                {/* HOVER CARD */}
+                {activeHover === item.id && (
+                  <div className="absolute top-10 left-0 w-64 bg-[#3B1F14] border border-[#D4AF37]/40 p-4 rounded-xl shadow-xl">
+                    <p className="text-[#F5E6B3] text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
-          {/* Mobile menu toggle button */}
+          {/* BOOK NOW BUTTON */}
+          <div className="hidden md:block">
+            <a
+              href="#book"
+              className="bg-[#D4AF37] text-[#2A140D] px-6 py-2 rounded-full font-semibold hover:bg-[#F5E6B3] transition"
+            >
+              Book Now
+            </a>
+          </div>
+
+          {/* MOBILE MENU BUTTON */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-              className="text-gray-700 hover:text-rose-600 p-2"
+              className="text-[#D4AF37]"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu, shown only when toggled */}
+        {/* MOBILE MENU */}
         {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-              {menuItems.map(({ name, href }) => (
-                <Link
-                  key={name}
-                  to={href}
-                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-rose-600"
-                  onClick={() => setIsMenuOpen(false)} // Close menu on link click
-                >
-                  {name}
-                </Link>
-              ))}
-            </div>
+          <div className="md:hidden bg-[#2A140D] border-t border-[#D4AF37]/30 px-6 py-4 space-y-4">
+
+            {menuItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className="block text-[#F5E6B3]"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
+
+            <a
+              href="#book"
+              className="block bg-[#D4AF37] text-[#2A140D] text-center py-2 rounded-full font-semibold"
+            >
+              Book Now
+            </a>
           </div>
         )}
       </div>
