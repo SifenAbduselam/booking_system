@@ -9,6 +9,7 @@ const Index = () => {
       {/* Hero Banner */}
       <HeroBanner />
       {/* Who We Are Section */}
+      <MissionSection />
        <CakeGallery />
        <PriceList />
       <WhoWeAre />
