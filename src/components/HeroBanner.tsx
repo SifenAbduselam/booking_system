@@ -64,22 +64,7 @@ const HeroBanner = () => {
         
 
         {/* Bottom Stats */}
-        <div className="mt-16 flex flex-wrap justify-center gap-8 md:gap-12 animate-fade-in-up delay-500">
-          <div className="text-center">
-            <p className="text-[#D4AF37] text-2xl font-bold">500+</p>
-            <p className="text-gray-300 text-[10px] uppercase tracking-wider mt-1">Cakes Delivered</p>
-          </div>
-          <div className="w-[1px] h-10 bg-[#D4AF37]/20 hidden md:block" />
-          <div className="text-center">
-            <p className="text-[#D4AF37] text-2xl font-bold">100%</p>
-            <p className="text-gray-300 text-[10px] uppercase tracking-wider mt-1">Premium Ingredients</p>
-          </div>
-          <div className="w-[1px] h-10 bg-[#D4AF37]/20 hidden md:block" />
-          <div className="text-center">
-            <p className="text-[#D4AF37] text-2xl font-bold">5★</p>
-            <p className="text-gray-300 text-[10px] uppercase tracking-wider mt-1">Customer Rating</p>
-          </div>
-        </div>
+       
       </div>
 
       {/* ===== SCROLL DOWN INDICATOR ===== */}
