@@ -1,126 +1,112 @@
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import Logo from "/logo.webp";
-import TopBar from "./TopBar";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { business } from "@/config/business";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeHover, setActiveHover] = useState<string | null>(null);
-
-  const menuItems = [
-    {
-      id: "about",
-      name: "About Us",
-      href: "#about",
-      description: "Learn about our luxury cake craftsmanship",
-    },
-    {
-      id: "products",
-      name: "Products",
-      href: "#products",
-      description: "Explore cakes, prices & collections",
-    },
-    {
-      id: "contact",
-      name: "Contact",
-      href: "#contact",
-      description: "Get in touch with our bakery",
-    },
-  ];
 
   return (
-    <nav className="sticky top-0 z-50">
+    // Sticky nav with dark chocolate background
+    <nav className="sticky top-0 z-50 w-full bg-[#2A1610] shadow-lg overflow-hidden">
+      
+      {/* Background Image with Dark Overlay for readability */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-20"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1606913084603-f5a0fc6ec8d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')", 
+        }}
+      />
+      {/* Gradient overlay to ensure text is always readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2A1610]/80 to-[#1A0D09]/100" />
 
-      {/* TOP BAR BACKGROUND IMAGE */}
-      <div className="bg-[url('/cake-bg.jpg')] bg-cover bg-center">
-        <div className="bg-black/60">
-          <TopBar />
-        </div>
-      </div>
-
-      {/* MAIN NAV */}
-      <div className="bg-[#2A140D]/95 backdrop-blur-md border-b border-[#D4AF37]/30">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-
-          {/* LOGO */}
-          <Link to="/" className="flex items-center">
-            <span className="text-[#D4AF37] text-2xl font-bold tracking-wide">
-              Amazing Cake Shop
-            </span>
-          </Link>
-
-          {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center gap-10 relative">
-
-            {menuItems.map((item) => (
-              <div
-                key={item.id}
-                className="relative"
-                onMouseEnter={() => setActiveHover(item.id)}
-                onMouseLeave={() => setActiveHover(null)}
-              >
-                <a
-                  href={item.href}
-                  className="text-[#F5E6B3] hover:text-[#D4AF37] transition"
-                >
-                  {item.name}
-                </a>
-
-                {/* HOVER CARD */}
-                {activeHover === item.id && (
-                  <div className="absolute top-10 left-0 w-64 bg-[#3B1F14] border border-[#D4AF37]/40 p-4 rounded-xl shadow-xl">
-                    <p className="text-[#F5E6B3] text-sm">
-                      {item.description}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
+      {/* Main Content Container */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
+          {/* Logo / Brand Name */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-2xl font-bold text-[#D4AF37] tracking-wider drop-shadow-md">
+              {business.name}
+            </Link>
           </div>
 
-          {/* BOOK NOW BUTTON */}
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="text-[#D4AF37] hover:text-white transition-colors font-medium text-sm uppercase tracking-wide">
+              Home
+            </Link>
+            <Link to="/about" className="text-[#D4AF37] hover:text-white transition-colors font-medium text-sm uppercase tracking-wide">
+              About Us
+            </Link>
+            <Link to="/contact" className="text-[#D4AF37] hover:text-white transition-colors font-medium text-sm uppercase tracking-wide">
+              Contact Us
+            </Link>
+
+            {/* Products Link with Hover Dropdown Card */}
+            <div className="relative group">
+              <button className="text-[#D4AF37] hover:text-white transition-colors font-medium text-sm uppercase tracking-wide flex items-center gap-1">
+                Products 
+                <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-300" />
+              </button>
+
+              {/* The Hover Card (Dropdown) */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 bg-[#1A0D09] border border-[#D4AF37]/30 rounded-lg shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                <div className="p-5">
+                  <h3 className="text-[#D4AF37] text-lg font-bold mb-3 border-b border-[#D4AF37]/20 pb-2">
+                    Our Signature Cakes
+                  </h3>
+                  <ul className="space-y-3">
+                    {business.cakes.map((cake, index) => (
+                      <li key={index} className="flex justify-between items-center text-white hover:text-[#D4AF37] transition-colors cursor-pointer group/item">
+                        <span className="font-medium text-sm">{cake.name}</span>
+                        <span className="text-[#D4AF37] font-bold text-sm bg-[#2A1610] px-2 py-1 rounded">
+                          {cake.price}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* Little arrow pointing up to the button */}
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#1A0D09] border-l border-t border-[#D4AF37]/30 rotate-45"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Book Now Button (Right Side) */}
           <div className="hidden md:block">
-            <a
-              href="#book"
-              className="bg-[#D4AF37] text-[#2A140D] px-6 py-2 rounded-full font-semibold hover:bg-[#F5E6B3] transition"
+            <Link
+              to="/book"
+              className="bg-[#D4AF37] text-[#2A1610] px-6 py-2.5 rounded-full text-sm font-bold hover:bg-[#E5C158] transition-all shadow-lg hover:shadow-[#D4AF37]/50 hover:scale-105 transform"
             >
               Book Now
-            </a>
+            </Link>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* Mobile Menu Toggle Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-[#D4AF37]"
+              className="text-[#D4AF37] hover:text-white p-2"
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? <X /> : <Menu />}
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+        {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[#2A140D] border-t border-[#D4AF37]/30 px-6 py-4 space-y-4">
-
-            {menuItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className="block text-[#F5E6B3]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-
-            <a
-              href="#book"
-              className="block bg-[#D4AF37] text-[#2A140D] text-center py-2 rounded-full font-semibold"
-            >
-              Book Now
-            </a>
+          <div className="md:hidden pb-4">
+            <div className="flex flex-col space-y-3 bg-[#1A0D09]/95 p-4 rounded-lg mt-2 border border-[#D4AF37]/20">
+              <Link to="/" className="text-[#D4AF37] hover:text-white font-medium py-2 border-b border-[#D4AF37]/10" onClick={() => setIsMenuOpen(false)}>Home</Link>
+              <Link to="/about" className="text-[#D4AF37] hover:text-white font-medium py-2 border-b border-[#D4AF37]/10" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+              <Link to="/contact" className="text-[#D4AF37] hover:text-white font-medium py-2 border-b border-[#D4AF37]/10" onClick={() => setIsMenuOpen(false)}>Contact Us</Link>
+              <Link to="/products" className="text-[#D4AF37] hover:text-white font-medium py-2 border-b border-[#D4AF37]/10" onClick={() => setIsMenuOpen(false)}>Products</Link>
+              <Link to="/book" className="bg-[#D4AF37] text-[#2A1610] px-6 py-3 rounded-full text-sm font-bold text-center hover:bg-[#E5C158] transition-colors mt-2" onClick={() => setIsMenuOpen(false)}>
+                Book Now
+              </Link>
+            </div>
           </div>
         )}
       </div>
